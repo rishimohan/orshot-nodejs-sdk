@@ -1,0 +1,23 @@
+{
+  "name": "orshot",
+  "version": "0.1.0",
+  "description": "Orshot API SDK for node.js",
+  "homepage": "https://github.com/rishimohan/orshot-nodejs-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/rishimohan/orshot-nodejs-sdk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rishimohan/orshot-nodejs-sdk.git"
+  },
+  "license": "ISC",
+  "author": "Rishi Mohan <iamrishi.ms@gmail.com>",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  }
+}
