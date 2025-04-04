@@ -39,7 +39,7 @@ const orshot = new Orshot("Your API key");
 ### Generate image
 
 ```js
-const response = await Orshot.generateImageFromTemplate(templateId, modifications, "base64", "png");
+const response = await Orshot.renderFromTemplate({templateId, modifications, responseType: "base64", responseFormat: "png"});
 console.log(response);
 ```
 
@@ -61,7 +61,7 @@ let modifications = {
   backgroundColor: ""
 }
 
-const response = await orshot.generateImageFromTemplate(templateId, modifications, "base64", "png");
+const response = await orshot.renderFromTemplate({templateId, modifications, responseType: "base64", responseFormat: "png"});
 console.log(response);
 ```
 
@@ -93,7 +93,7 @@ let modifications = {
   backgroundColor: ""
 }
 
-const response = await orshot.generateImageFromTemplate(templateId, modifications, "url", "png");
+const response = await orshot.renderFromTemplate({templateId, modifications, responseType: "url", responseFormat: "png"});
 console.log(response);
 ```
 
@@ -126,7 +126,7 @@ let modifications = {
   backgroundColor: ""
 }
 
-const response = await orshot.generateImageFromTemplate(templateId, modifications, "binary", "png");
+const response = await orshot.renderFromTemplate({templateId, modifications, responseType: "binary", responseFormat: "png"});
 const arrayBuffer = await response.arrayBuffer();
 const buffer = Buffer.from(arrayBuffer);
 
@@ -135,11 +135,11 @@ createWriteStream("og.png").write(buffer);
 
 This example writes the binary image to the file `og.png` in the current directory.
 
-## generateImageFromTemplate
+## renderFromTemplate
 
-Use this function to generate an image. It takes in 3 arguments
+Use this function to render an image/pdf. Render template options takes in 4 options.
 
-| argument | required | description |
+| key | required | description |
 |----------|----------|-------------|
 | `templateId` | Yes | ID of the template (`open-graph-image-1`, `tweet-image-1`, `beautify-screenshot-1`, ...) |
 | `modifications` | Yes | Modifications for the selected template. |

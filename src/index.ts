@@ -1,4 +1,4 @@
-import { ResponseFormat, ResponseType } from "./types";
+import { TemplateRenderOptions } from "./types";
 import { DEFAULT_RESPONSE_TYPE, DEFAULT_RESPONSE_FORMAT, ORSHOT_API_BASE_URL, ORSHOT_API_VERSION, ORSHOT_SOURCE } from "./constants";
 
 export class Orshot {
@@ -30,7 +30,9 @@ export class Orshot {
     };
   }
 
-  public async generateImageFromTemplate(templateId: string, modifications: any, responseType?: ResponseType, responseFormat?: ResponseFormat) {
+  public async renderFromTemplate(renderOptions: TemplateRenderOptions) {
+    let { templateId, modifications, responseType, responseFormat } = renderOptions;
+
     if (!responseType) {
       responseType = DEFAULT_RESPONSE_TYPE;
     }
