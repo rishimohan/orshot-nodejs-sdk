@@ -172,3 +172,7 @@ Write simple code to generate an image from a template.
 From the `test` directory, run `npm link orshot`
 
 You can now run `node index.js` to test if the sdk code works as expected.
+
+## Publish package to NPM
+
+Create a new release from GitHub. This will trigger a GitHub action which will publish the package to NPM.
