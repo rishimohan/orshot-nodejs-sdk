@@ -137,7 +137,16 @@ This example writes the binary image to the file `og.png` in the current directo
 
 ## renderFromTemplate
 
-Use this function to render an image/pdf. Render template options takes in 4 options.
+Use this function to render an image/pdf. Render template takes in 4 options passed as an object
+
+```
+{
+  templateId,
+  modifications,
+  responseType,
+  responseFormat
+}
+```
 
 | key | required | description |
 |----------|----------|-------------|
