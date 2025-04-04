@@ -1,8 +1,8 @@
 {
   "name": "orshot",
   "version": "0.1.0",
-  "description": "Orshot API SDK for node.js",
-  "homepage": "https://github.com/rishimohan/orshot-nodejs-sdk#readme",
+  "description": "Orshot API SDK for Node.js",
+  "homepage": "https://orshot.com",
   "bugs": {
     "url": "https://github.com/rishimohan/orshot-nodejs-sdk/issues"
   },
