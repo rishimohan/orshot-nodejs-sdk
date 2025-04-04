@@ -16,7 +16,7 @@ yarn add orshot
 
 ## Usage
 
-If you don't have your API key, get one from [orshot.com](https://orshot.com/pricing). Check the documentation on [how to get your API key](https://docs.pika.style/docs/basics/getting-api-key)
+If you don't have your API key, get one from [orshot.com](https://orshot.com)
 
 ### Import
 
@@ -155,7 +155,7 @@ Use this function to render an image/pdf. Render template takes in 4 options pas
 | `responseType` | No | `base64`, `binary`, `url` (Defaults to `base64`). |
 | `responseFormat` | No | `png`, `webp`, `pdf`, `jpg`, `jpeg` (Defaults to `png`). |
 
-For available templates and their modifications refer [image generation api templates](https://pika.style/image-generation-api/templates)
+For available templates and their modifications refer [Orshot Templates Page](https://orshot.com/templates)
 
 ## Local development and testing
 
