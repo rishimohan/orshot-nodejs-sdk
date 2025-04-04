@@ -1,6 +1,6 @@
 {
   "name": "orshot",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Orshot API SDK for Node.js",
   "homepage": "https://orshot.com",
   "bugs": {
