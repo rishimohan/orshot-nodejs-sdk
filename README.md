@@ -46,7 +46,7 @@ console.log(response);
 ### Generate signed URL
 
 ```js
-const response = await Orshot.renderFromTemplate({templateId, modifications, expiresAt: 1744276943, renderType: "images", responseFormat: "png"});
+const response = await Orshot.generateSignedUrl({templateId, modifications, expiresAt: 1744276943, renderType: "images", responseFormat: "png"});
 console.log(response);
 ```
 
@@ -158,7 +158,7 @@ let modifications = {
   backgroundColor: ""
 }
 
-const response = await Orshot.renderFromTemplate({templateId, modifications, expiresAt: 1744276943, renderType: "images", responseFormat: "png"});
+const response = await Orshot.generateSignedUrl({templateId, modifications, expiresAt: 1744276943, renderType: "images", responseFormat: "png"});
 console.log(response);
 ```
 
