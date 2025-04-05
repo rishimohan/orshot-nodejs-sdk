@@ -43,6 +43,13 @@ const response = await Orshot.renderFromTemplate({templateId, modifications, res
 console.log(response);
 ```
 
+### Generate signed URL
+
+```js
+const response = await Orshot.renderFromTemplate({templateId, modifications, expiresAt: 1744276943, renderType: "images", responseFormat: "png"});
+console.log(response);
+```
+
 ## Example
 
 ### `Base64` response format
@@ -135,6 +142,26 @@ createWriteStream("og.png").write(buffer);
 
 This example writes the binary image to the file `og.png` in the current directory.
 
+### Signed URL
+
+```js
+import { Orshot } from "orshot";
+
+const orshot = new Orshot("os-ha2jdus1cbz1dpt4mktgjyvx");
+
+let templateId = "open-graph-image-1";
+let modifications = {
+  title: "Orshot",
+  description: "Create Visuals and Automate Image Generation",
+  textColor: "",
+  backgroundImageUrl: "",
+  backgroundColor: ""
+}
+
+const response = await Orshot.renderFromTemplate({templateId, modifications, expiresAt: 1744276943, renderType: "images", responseFormat: "png"});
+console.log(response);
+```
+
 ## renderFromTemplate
 
 Use this function to render an image/pdf. Render template takes in 4 options passed as an object
@@ -157,13 +184,36 @@ Use this function to render an image/pdf. Render template takes in 4 options pas
 
 For available templates and their modifications refer [Orshot Templates Page](https://orshot.com/templates)
 
+## generateSignedUrl
+
+Use this function to generate signed URL.
+
+```
+{
+  templateId,
+  modifications,
+  renderType,
+  responseFormat,
+  expiresAt
+}
+```
+
+| key | required | description |
+|----------|----------|-------------|
+| `templateId` | Yes | ID of the template (`open-graph-image-1`, `tweet-image-1`, `beautify-screenshot-1`, ...) |
+| `modifications` | Yes | Modifications for the selected template. |
+| `expiresAt` | Yes | Expires at in unix timestamp (Number). |
+| `renderType` | No | `images`, `pdfs` (Defaults to `images`). |
+| `responseFormat` | No | `png`, `webp`, `pdf`, `jpg`, `jpeg` (Defaults to `png`). |
+
+
 ## Local development and testing
 
 Run these from the project
 
 `npm run build`
 
-`npm run link`
+`npm link`
 
 Create a test directory and add `index.js` file
 
