@@ -158,7 +158,7 @@ let modifications = {
   backgroundColor: ""
 }
 
-const response = await Orshot.generateSignedUrl({templateId, modifications, expiresAt: 1744276943, renderType: "images", responseFormat: "png"});
+const response = await orshot.generateSignedUrl({templateId, modifications, expiresAt: 1744276943, renderType: "images", responseFormat: "png"});
 console.log(response);
 ```
 
