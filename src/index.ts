@@ -1,4 +1,4 @@
-import { TemplateRenderOptions, SignedUrlOptions } from "./types";
+import { TemplateRenderOptions, SignedUrlOptions, StudioRenderOptions } from "./types";
 import { DEFAULT_RESPONSE_TYPE, DEFAULT_RESPONSE_FORMAT, DEFAULT_RENDER_TYPE, ORSHOT_API_BASE_URL, ORSHOT_API_VERSION, ORSHOT_SOURCE } from "./constants";
 
 export class Orshot {
@@ -100,6 +100,69 @@ export class Orshot {
 
     const jsonData = await response.json();
     return jsonData;
+  }
+
+  public async renderFromStudioTemplate(options: StudioRenderOptions) {
+    const { templateId, modifications, response: responseOptions, pdfOptions, videoOptions, publish } = options;
+
+    const endpoint = `${this.getBaseUrl()}/studio/render`;
+
+    const body: Record<string, any> = {
+      templateId,
+      source: ORSHOT_SOURCE,
+    };
+
+    if (modifications) {
+      body.modifications = modifications;
+    }
+
+    body.response = {
+      type: responseOptions?.type ?? DEFAULT_RESPONSE_TYPE,
+      format: responseOptions?.format ?? DEFAULT_RESPONSE_FORMAT,
+    };
+
+    if (responseOptions?.scale !== undefined) {
+      body.response.scale = responseOptions.scale;
+    }
+
+    if (responseOptions?.includePages) {
+      body.response.includePages = responseOptions.includePages;
+    }
+
+    if (responseOptions?.fileName) {
+      body.response.fileName = responseOptions.fileName;
+    }
+
+    if (pdfOptions) {
+      body.pdfOptions = pdfOptions;
+    }
+
+    if (videoOptions) {
+      body.videoOptions = videoOptions;
+    }
+
+    if (publish) {
+      body.publish = publish;
+    }
+
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: this.getHeaders(),
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to render studio template: " + response.status);
+    }
+
+    const responseType = responseOptions?.type ?? DEFAULT_RESPONSE_TYPE;
+
+    if (responseType === "base64" || responseType === "url") {
+      const jsonData = await response.json();
+      return jsonData;
+    } else {
+      return response;
+    }
   }
 }
 

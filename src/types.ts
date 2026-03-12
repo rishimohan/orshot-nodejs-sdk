@@ -1,5 +1,5 @@
 export type ResponseType = "base64" | "binary" | "url";
-export type ResponseFormat = "png" | "webp" | "pdf" | "jpg" | "jpeg" ;
+export type ResponseFormat = "png" | "webp" | "pdf" | "jpg" | "jpeg" | "mp4" | "webm" | "gif";
 export type RenderType = "images" | "pdfs";
 
 export type TemplateRenderOptions = {
@@ -15,4 +15,49 @@ export type SignedUrlOptions = {
   renderType?: RenderType;
   responseFormat?: ResponseFormat;
   expiresAt: number;
+};
+
+export type StudioResponseOptions = {
+  type?: ResponseType;
+  format?: ResponseFormat;
+  scale?: number;
+  includePages?: number[];
+  fileName?: string;
+};
+
+export type PdfOptions = {
+  margin?: string;
+  rangeFrom?: number | null;
+  rangeTo?: number | null;
+  colorMode?: "rgb" | "cmyk";
+  dpi?: number;
+};
+
+export type VideoOptions = {
+  trimStart?: number;
+  trimEnd?: number;
+  muted?: boolean;
+  loop?: boolean;
+};
+
+export type PublishSchedule = {
+  scheduledFor?: string;
+};
+
+export type PublishOptions = {
+  accounts: number[];
+  content?: string;
+  isDraft?: boolean;
+  schedule?: PublishSchedule;
+  timezone?: string;
+  platformOptions?: Record<string, any>;
+};
+
+export type StudioRenderOptions = {
+  templateId: number;
+  modifications?: Record<string, any>;
+  response?: StudioResponseOptions;
+  pdfOptions?: PdfOptions;
+  videoOptions?: VideoOptions;
+  publish?: PublishOptions;
 };
