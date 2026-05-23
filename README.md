@@ -1,6 +1,7 @@
 # Orshot Node.js API SDK
 
-View on npmjs: https://www.npmjs.com/package/orshot
+- API Reference: https://orshot.com/docs/api-reference
+- SDK Documentation: https://orshot.com/docs/sdks/node
 
 ## Installation
 
@@ -18,7 +19,7 @@ yarn add orshot
 
 ## Usage
 
-If you don't have your API key, get one from [orshot.com](https://orshot.com)
+If you don't have your API key, get one from [Orshot](https://orshot.com/docs/quick-start/get-api-key)
 
 ### Import
 
@@ -141,39 +142,39 @@ const response = await orshot.renderFromStudioTemplate({
 
 ### Parameters
 
-| key                             | required | description                                                                              |
-| ------------------------------- | -------- | ---------------------------------------------------------------------------------------- |
-| `templateId`                    | Yes      | ID of the Studio template.                                                               |
-| `modifications`                 | No       | Object of dynamic modifications for the template.                                        |
-| `response.type`                 | No       | `base64`, `binary`, `url` (Defaults to `url`).                                           |
-| `response.format`               | No       | `png`, `webp`, `jpg`, `jpeg`, `avif`, `pdf`, `mp4`, `webm`, `gif` (Defaults to `png`).   |
-| `response.scale`                | No       | Scale of the output (`1` = original, `2` = double). Defaults to `1`.                     |
-| `response.quality`              | No       | Output quality (`1`-`100`). Controls compression for the rendered output.                 |
-| `response.includePages`         | No       | Page numbers to render for multi-page templates (e.g. `[1, 3]`).                         |
-| `response.fileName`             | No       | Custom file name (without extension). Works with `url` and `binary` types.               |
-| `pdfOptions.margin`             | No       | CSS margin value (e.g. `"20px"`).                                                        |
-| `pdfOptions.rangeFrom`          | No       | Start page number for PDF output.                                                        |
-| `pdfOptions.rangeTo`            | No       | End page number for PDF output.                                                          |
-| `pdfOptions.colorMode`          | No       | `rgb` or `cmyk`.                                                                         |
-| `pdfOptions.dpi`                | No       | DPI for print quality (e.g. `300`).                                                      |
-| `videoOptions.trimStart`        | No       | Trim start time in seconds.                                                              |
-| `videoOptions.trimEnd`          | No       | Trim end time in seconds.                                                                |
-| `videoOptions.muted`            | No       | Mute audio track.                                                                        |
-| `videoOptions.loop`             | No       | Loop the video.                                                                          |
-| `videoOptions.duration`         | No       | Total video duration in seconds.                                                         |
-| `videoOptions.fps`              | No       | Frames per second (`1`-`30`).                                                            |
-| `videoOptions.quality`          | No       | Video quality (`1`-`100`).                                                               |
-| `videoOptions.audioSource`      | No       | External audio URL or array of per-page audio sources.                                   |
-| `videoOptions.subtitleSource`   | No       | Subtitle file URL.                                                                       |
-| `videoOptions.combinePages`     | No       | Combine multi-page templates into a single video.                                        |
-| `videoOptions.pageTransition`   | No       | Transition effect between pages (e.g. `"fade"`, `"dissolve"`, `"wipe"`, `"slide"`).      |
-| `videoOptions.pageTransitionDuration` | No | Transition duration in seconds (`0.1`-`2`).                                              |
-| `publish.accounts`              | No       | Array of social account IDs from your workspace.                                         |
-| `publish.content`               | No       | Caption/text for the social post.                                                        |
-| `publish.isDraft`               | No       | `true` to save as draft instead of publishing.                                           |
-| `publish.schedule.scheduledFor` | No       | ISO date string to schedule the post.                                                    |
-| `publish.timezone`              | No       | Timezone string (e.g. `"America/New_York"`).                                             |
-| `publish.platformOptions`       | No       | Per-account options keyed by account ID.                                                 |
+| key                                   | required | description                                                                            |
+| ------------------------------------- | -------- | -------------------------------------------------------------------------------------- |
+| `templateId`                          | Yes      | ID of the Studio template.                                                             |
+| `modifications`                       | No       | Object of dynamic modifications for the template.                                      |
+| `response.type`                       | No       | `base64`, `binary`, `url` (Defaults to `url`).                                         |
+| `response.format`                     | No       | `png`, `webp`, `jpg`, `jpeg`, `avif`, `pdf`, `mp4`, `webm`, `gif` (Defaults to `png`). |
+| `response.scale`                      | No       | Scale of the output (`1` = original, `2` = double). Defaults to `1`.                   |
+| `response.quality`                    | No       | Output quality (`1`-`100`). Controls compression for the rendered output.              |
+| `response.includePages`               | No       | Page numbers to render for multi-page templates (e.g. `[1, 3]`).                       |
+| `response.fileName`                   | No       | Custom file name (without extension). Works with `url` and `binary` types.             |
+| `pdfOptions.margin`                   | No       | CSS margin value (e.g. `"20px"`).                                                      |
+| `pdfOptions.rangeFrom`                | No       | Start page number for PDF output.                                                      |
+| `pdfOptions.rangeTo`                  | No       | End page number for PDF output.                                                        |
+| `pdfOptions.colorMode`                | No       | `rgb` or `cmyk`.                                                                       |
+| `pdfOptions.dpi`                      | No       | DPI for print quality (e.g. `300`).                                                    |
+| `videoOptions.trimStart`              | No       | Trim start time in seconds.                                                            |
+| `videoOptions.trimEnd`                | No       | Trim end time in seconds.                                                              |
+| `videoOptions.muted`                  | No       | Mute audio track.                                                                      |
+| `videoOptions.loop`                   | No       | Loop the video.                                                                        |
+| `videoOptions.duration`               | No       | Total video duration in seconds.                                                       |
+| `videoOptions.fps`                    | No       | Frames per second (`1`-`30`).                                                          |
+| `videoOptions.quality`                | No       | Video quality (`1`-`100`).                                                             |
+| `videoOptions.audioSource`            | No       | External audio URL or array of per-page audio sources.                                 |
+| `videoOptions.subtitleSource`         | No       | Subtitle file URL.                                                                     |
+| `videoOptions.combinePages`           | No       | Combine multi-page templates into a single video.                                      |
+| `videoOptions.pageTransition`         | No       | Transition effect between pages (e.g. `"fade"`, `"dissolve"`, `"wipe"`, `"slide"`).    |
+| `videoOptions.pageTransitionDuration` | No       | Transition duration in seconds (`0.1`-`2`).                                            |
+| `publish.accounts`                    | No       | Array of social account IDs from your workspace.                                       |
+| `publish.content`                     | No       | Caption/text for the social post.                                                      |
+| `publish.isDraft`                     | No       | `true` to save as draft instead of publishing.                                         |
+| `publish.schedule.scheduledFor`       | No       | ISO date string to schedule the post.                                                  |
+| `publish.timezone`                    | No       | Timezone string (e.g. `"America/New_York"`).                                           |
+| `publish.platformOptions`             | No       | Per-account options keyed by account ID.                                               |
 
 ---
 
@@ -215,13 +216,13 @@ const response = await orshot.generateSignedUrl({
 
 Use `"never"` for `expiresAt` to create a non-expiring signed URL.
 
-| key              | required | description                                                        |
-| ---------------- | -------- | ------------------------------------------------------------------ |
-| `templateId`     | Yes      | ID of the template.                                                |
-| `modifications`  | Yes      | Modifications for the selected template.                           |
-| `expiresAt`      | Yes      | Unix timestamp (number) or `"never"` for no expiration.            |
-| `renderType`     | No       | `images`, `pdfs`, `videos` (Defaults to `images`).                 |
-| `responseFormat` | No       | `png`, `webp`, `pdf`, `jpg`, `jpeg` (Defaults to `png`).           |
+| key              | required | description                                              |
+| ---------------- | -------- | -------------------------------------------------------- |
+| `templateId`     | Yes      | ID of the template.                                      |
+| `modifications`  | Yes      | Modifications for the selected template.                 |
+| `expiresAt`      | Yes      | Unix timestamp (number) or `"never"` for no expiration.  |
+| `renderType`     | No       | `images`, `pdfs`, `videos` (Defaults to `images`).       |
+| `responseFormat` | No       | `png`, `webp`, `pdf`, `jpg`, `jpeg` (Defaults to `png`). |
 
 ## Error Handling
 
@@ -247,25 +248,10 @@ All types are exported from the package:
 
 ```ts
 import { Orshot } from "orshot";
-import type { StudioRenderOptions, VideoOptions, PdfOptions, PublishOptions } from "orshot";
+import type {
+  StudioRenderOptions,
+  VideoOptions,
+  PdfOptions,
+  PublishOptions,
+} from "orshot";
 ```
-
-## Local development and testing
-
-Run these from the project
-
-`npm run build`
-
-`npm link`
-
-Create a test directory and add `index.js` file
-
-Write simple code to generate an image from a template.
-
-From the `test` directory, run `npm link orshot`
-
-You can now run `node index.js` to test if the sdk code works as expected.
-
-## Publish package to NPM
-
-Create a new release from GitHub. This will trigger a GitHub action which will publish the package to NPM.
