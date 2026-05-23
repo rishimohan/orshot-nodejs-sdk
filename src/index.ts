@@ -1,6 +1,20 @@
 import { TemplateRenderOptions, SignedUrlOptions, StudioRenderOptions } from "./types";
 import { DEFAULT_RESPONSE_TYPE, DEFAULT_RESPONSE_FORMAT, DEFAULT_RENDER_TYPE, ORSHOT_API_BASE_URL, ORSHOT_API_VERSION, ORSHOT_SOURCE } from "./constants";
 
+export type {
+  ResponseType,
+  ResponseFormat,
+  RenderType,
+  TemplateRenderOptions,
+  SignedUrlOptions,
+  StudioRenderOptions,
+  StudioResponseOptions,
+  PdfOptions,
+  VideoOptions,
+  PublishOptions,
+  PublishSchedule,
+} from "./types";
+
 export class Orshot {
   private readonly apiKey: string;
 
@@ -57,7 +71,13 @@ export class Orshot {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to fetch image: " + response.status);
+      let message = `Request failed with status ${response.status}`;
+      try {
+        const errorData = await response.json();
+        if (errorData?.error) message = errorData.error;
+        else if (errorData?.message) message = errorData.message;
+      } catch {}
+      throw new Error(message);
     }
 
     if (responseType === "base64" || responseType === "url") {
@@ -95,7 +115,13 @@ export class Orshot {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to fetch image: " + response.status);
+      let message = `Request failed with status ${response.status}`;
+      try {
+        const errorData = await response.json();
+        if (errorData?.error) message = errorData.error;
+        else if (errorData?.message) message = errorData.message;
+      } catch {}
+      throw new Error(message);
     }
 
     const jsonData = await response.json();
@@ -129,6 +155,10 @@ export class Orshot {
       body.response.includePages = responseOptions.includePages;
     }
 
+    if (responseOptions?.quality !== undefined) {
+      body.response.quality = responseOptions.quality;
+    }
+
     if (responseOptions?.fileName) {
       body.response.fileName = responseOptions.fileName;
     }
@@ -152,7 +182,13 @@ export class Orshot {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to render studio template: " + response.status);
+      let message = `Request failed with status ${response.status}`;
+      try {
+        const errorData = await response.json();
+        if (errorData?.error) message = errorData.error;
+        else if (errorData?.message) message = errorData.message;
+      } catch {}
+      throw new Error(message);
     }
 
     const responseType = responseOptions?.type ?? DEFAULT_RESPONSE_TYPE;

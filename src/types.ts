@@ -1,6 +1,6 @@
 export type ResponseType = "base64" | "binary" | "url";
-export type ResponseFormat = "png" | "webp" | "pdf" | "jpg" | "jpeg" | "mp4" | "webm" | "gif";
-export type RenderType = "images" | "pdfs";
+export type ResponseFormat = "png" | "webp" | "pdf" | "jpg" | "jpeg" | "avif" | "mp4" | "webm" | "gif";
+export type RenderType = "images" | "pdfs" | "videos";
 
 export type TemplateRenderOptions = {
   templateId: string;
@@ -14,13 +14,14 @@ export type SignedUrlOptions = {
   modifications: any;
   renderType?: RenderType;
   responseFormat?: ResponseFormat;
-  expiresAt: number;
+  expiresAt: number | "never";
 };
 
 export type StudioResponseOptions = {
   type?: ResponseType;
   format?: ResponseFormat;
   scale?: number;
+  quality?: number;
   includePages?: number[];
   fileName?: string;
 };
@@ -38,6 +39,14 @@ export type VideoOptions = {
   trimEnd?: number;
   muted?: boolean;
   loop?: boolean;
+  duration?: number;
+  fps?: number;
+  quality?: number;
+  audioSource?: string | Array<{ url: string; pageId?: string; page?: number; track?: string }>;
+  subtitleSource?: string;
+  combinePages?: boolean;
+  pageTransition?: string;
+  pageTransitionDuration?: number;
 };
 
 export type PublishSchedule = {
@@ -54,7 +63,7 @@ export type PublishOptions = {
 };
 
 export type StudioRenderOptions = {
-  templateId: number;
+  templateId: number | string;
   modifications?: Record<string, any>;
   response?: StudioResponseOptions;
   pdfOptions?: PdfOptions;
